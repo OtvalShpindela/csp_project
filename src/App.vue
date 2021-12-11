@@ -1,30 +1,43 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="app">
+    <div class="wrapper">
+      <vheader></vheader>
+      <vnavigation></vnavigation>
+      <router-view></router-view>
+      <vfooter></vfooter>
+    </div>
   </div>
-  <router-view />
 </template>
 
+<script>
+import vheader from "./components/v-header";
+import vnavigation from "./components/v-navigation";
+import vfooter from "./components/v-footer";
+export default {
+  components: { vnavigation, vheader, vfooter },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.app {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  background: white;
+  line-height: 1.6;
+  background-color: black;
 }
 
-#nav {
-  padding: 30px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 </style>
