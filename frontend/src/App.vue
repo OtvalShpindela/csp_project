@@ -1,20 +1,23 @@
 <template>
   <div class="app">
     <div class="wrapper">
-      <vheader></vheader>
-      <vnavigation></vnavigation>
-      <router-view></router-view>
-      <vfooter></vfooter>
+      <component :is="layout">
+        <router-view/>
+      </component>
     </div>
   </div>
 </template>
 
 <script>
-import vheader from "./components/v-header";
-import vnavigation from "./components/v-navigation";
-import vfooter from "./components/v-footer";
+import AuthLayout from "@/layouts/AuthLayout";
+import MainLayout from "@/layouts/MainLayout";
 export default {
-  components: { vnavigation, vheader, vfooter },
+  computed: {
+    layout() {
+        return (this.$route.meta.layout || 'empty') + '-layout';
+    }
+  },
+  components: { AuthLayout, MainLayout }
 };
 </script>
 
